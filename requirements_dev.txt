@@ -1,0 +1,8 @@
+pytest
+tox
+pre-commit
+pytest
+pytest-mock
+black
+flake8
+flake8-pyproject

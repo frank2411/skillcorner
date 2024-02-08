@@ -1,0 +1,79 @@
+exclude: "^migrations/"
+repos:
+  - repo: https://github.com/myint/autoflake
+    rev: v2.0.0
+    hooks:
+      - id: autoflake
+        args:
+          - --in-place
+          - --expand-star-imports
+          - --remove-duplicate-keys
+          - --remove-unused-variables
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.3.1
+    hooks:
+      - id: pyupgrade
+        args: [--py311-plus]
+  - repo: https://github.com/asottile/blacken-docs
+    rev: 1.13.0
+    hooks:
+      - id: blacken-docs
+        additional_dependencies: [black==22.12.0]
+  - repo: https://github.com/ambv/black
+    rev: 22.12.0
+    hooks:
+      - id: black
+        args:
+          - --safe
+          - --quiet
+          - --line-length=130
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: check-json
+      - id: check-ast
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        args:
+          - "--max-line-length=130"
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.991
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: python
+        "types": [python]
+        args: [
+            "--ignore-missing-imports",
+            "--disallow-untyped-defs",
+            "--disallow-untyped-calls",
+            # The option below triggers errors such as
+            # "Untyped decorator makes function "<function>" untyped"
+            # which are not relevant when decorators are imported from external libs.
+            # Uncomment if custom decorators are implemented.
+            # "--disallow-untyped-decorators",
+            "--scripts-are-modules",
+            "--implicit-reexport",
+            "--install-types",
+            "--non-interactive",
+            "--explicit-package-bases",
+            "--namespace-packages",
+          ]
+        require_serial: true
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.6.2
+    hooks:
+      - id: prettier
+        args: [--prose-wrap=always, --print-width=88]
+        types: [file, python]
