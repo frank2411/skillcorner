@@ -3,12 +3,12 @@ from .line_helper import LineHelper
 
 
 @click.command()
-@click.argument('filepath')
+@click.argument("filepath")
 def skillcorner_line_cleaner(filepath) -> None:
 
     to_parse_file = None
     try:
-        to_parse_file = open(filepath, 'r')
+        to_parse_file = open(filepath, "r")
     except FileNotFoundError:
         raise click.FileError(filepath, "File not found.")
 

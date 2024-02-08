@@ -2,6 +2,10 @@
 
 ##  Install the package (inside or outside a venv, your choice)
 
+### Requirements
+- **Python3.11**
+
+
 ### If you want to run the test suite
 ```
 pip install -e ".[dev]"
