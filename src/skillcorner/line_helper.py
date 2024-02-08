@@ -43,7 +43,7 @@ class LineHelper:
 
         self.check_ending_dot()
 
-    def check_ending_dot(self):
+    def check_ending_dot(self) -> None:
         """Third method in the chain. Check if a dot `.` character is found at the end of the line.
         If found, return line value as it is.
         """
@@ -57,7 +57,7 @@ class LineHelper:
 
         self.check_json_format()
 
-    def check_json_format(self):
+    def check_json_format(self) -> None:
         """Fourth method in the chain. Check if a curly bracket `{` character is found at the start of the line.
         If found, deserialize line value in JSON format, add `pair` key to the deserialized data and, lastly, re-serialize
         the changed data and set it as the new value of line.

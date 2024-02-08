@@ -1,12 +1,11 @@
 from pathlib import Path
-from typing import List, Union
 
 import setuptools  # type: ignore
 
 HERE = Path(__file__).parent
 
 
-def get_requirements(path: Union[str, Path]) -> List[str]:
+def get_requirements(path: str | Path) -> list[str]:
     with open(HERE / path, encoding="utf8") as file:
         content = file.readlines()
     return content
